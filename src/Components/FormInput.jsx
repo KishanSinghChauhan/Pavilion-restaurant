@@ -36,13 +36,17 @@ class FormInput extends Component {
         <LocalForm onSubmit={(values) => this.handleSubmit(values)} className="form-input">
         <Row className="form-group">
           <Col md={6} className="input-column">
+
             <Label htmlFor="message">Text Field</Label><span className="text-danger">*</span>
-            <Control.textarea model=".message" id="message" name="message" className="form-control input-area"
-              rows="1" 
-              validators={{
-                required, maxLength: maxLength(101)
-              }}
-            />
+            <div style={{ position: "relative" }}>
+              <span style={{ position: "absolute", margin: 10, padding:'0 10px 0 10px', borderRight: "1px solid grey",fontSize:'12px', fontWeight:'500' }}>Hello</span>
+              <Control.textarea model=".message" id="message" name="message" className="form-control input-area" style={{ paddingLeft: 64}}
+                rows="1" 
+                validators={{
+                  required, maxLength: maxLength(101)
+                }}
+              />
+            </div>
             <Errors
               className="text-danger error-input"
               model=".message"

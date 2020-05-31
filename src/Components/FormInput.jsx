@@ -26,7 +26,6 @@ class FormInput extends Component {
   render(){
     const required = (val) => val && val.length;
     const maxLength = (len) => (val) => !(val) || (val.length <= len);
-    const minLength = (len) => (val) => val && (val.length >= len);
     const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
     return (
       <div className="form-div">
@@ -82,7 +81,7 @@ class FormInput extends Component {
             <Label htmlFor="email">Email Field</Label><span className="text-danger">*</span>
             <Control.text model=".email" id="email" name="email" className="form-control"
               validators={{
-                required, validEmail
+                validEmail
               }}
             />
             <Errors
@@ -90,7 +89,6 @@ class FormInput extends Component {
               model=".email"
               show="touched"
               messages={{
-                  // required: 'Required',
                   validEmail:'Invalid email address'
               }}
             />

@@ -6,14 +6,16 @@ import './styles/AllFeddbacks.scss';
 
 const AllFeedback = ({currentFeedback}) =>{
     return(
-        <Table bordered>
+        <div className="table-div">
+            <h2>All Feedback</h2>
+            <Table bordered>
             <thead>
               <tr>
-                <th>Form Name</th>
+                <th >Form Name</th>
                 <th>Text</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Name</th>
+                <th>Customer Name</th>
                 <th>Quality Of Service</th>
                 <th>Quality Of Beverages</th>
                 <th>Restaurant Clean</th>
@@ -25,10 +27,10 @@ const AllFeedback = ({currentFeedback}) =>{
                     <tbody>
                         <tr>
                             <th scope="row">Aromatic Bar</th>
-                            <td>{feed.message}</td>
+                            <td style={{width:"18%"}}>{feed.message}</td>
                             <td>{feed.phone}</td>
                             <td>{feed.email}</td>
-                            <td>{feed.name}</td>
+                            <td className="text-capitalize">{feed.name}</td>
                             <td>{feed.service}</td>
                             <td>{feed.beverages}</td>
                             <td>{feed.restaurantClean}</td>
@@ -40,6 +42,8 @@ const AllFeedback = ({currentFeedback}) =>{
         }
         
       </Table>
+        </div>
+        
     )
 }
 const mapStateToProps = state =>({

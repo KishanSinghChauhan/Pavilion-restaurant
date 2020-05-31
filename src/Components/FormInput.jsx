@@ -24,10 +24,14 @@ class FormInput extends Component {
     this.props.history.push('/feedbacks')
   }
   render(){
+    const required = (val) => val && val.length;
+    const maxLength = (len) => (val) => !(val) || (val.length <= len);
+    const minLength = (len) => (val) => val && (val.length >= len);
+    const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
     return (
       <div className="form-div">
-        <h4>Aromatic Bar</h4>
-        <p>We are committed to providing you with the best
+        <h4 style={{fontWeight:'600' , fontSize:'20px'}}>Aromatic Bar</h4>
+        <p style={{fontSize:'15px',fontWeight:'500'}}>We are committed to providing you with the best
           dining experience possible, so we welcome your comments.
           Please fill out this questionnaire. Thank you.
         </p>
@@ -37,6 +41,19 @@ class FormInput extends Component {
             <Label htmlFor="message">Text Field</Label><span className="text-danger">*</span>
             <Control.textarea model=".message" id="message" name="message" className="form-control input-area"
               rows="1" 
+              validators={{
+                required, minLength: minLength(21), maxLength: maxLength(101)
+              }}
+            />
+            <Errors
+              className="text-danger"
+              model=".message"
+              show="touched"
+              messages={{
+                  required: 'Required',
+                  minLength: 'Must be greater than 20 characters',
+                  maxLength: 'Must be 100 characters or less'
+              }}
             />
             <Label>Phone Field</Label><span className="text-danger">*</span>
             <PhoneInput className="Phone-Input"
@@ -45,92 +62,169 @@ class FormInput extends Component {
               value={ this.state.phone }
               onChange={ phone => this.setState({ phone }) } 
             />
+            <div>
             <Label htmlFor="name">Name</Label><span className="text-danger">*</span>
             <Control.text model=".name" id="name" name="name"
               className="form-control"
+              validators={{
+                required, minLength: minLength(3), maxLength: maxLength(30)
+              }}
             />
+            <Errors
+              className="text-danger"
+              model=".name"
+              show="touched"
+              messages={{
+                  required: 'Required',
+                  minLength: 'Must be greater than 2 characters',
+                  maxLength: 'Must be 30 characters or less'
+              }}
+            />
+            </div>
             <Label htmlFor="email">Email Field</Label><span className="text-danger">*</span>
-            <Control.text model=".email" id="email" name="email"
-              className="form-control" 
+            <Control.text model=".email" id="email" name="email" className="form-control"
+              validators={{
+                required, validEmail
+              }}
+            />
+            <Errors
+              className="text-danger"
+              model=".email"
+              show="touched"
+              messages={{
+                  required: 'Required',
+                  validEmail:'Invalid email address'
+              }}
             />
           </Col>
           <Col md={6} className="button-column">
             <Label>Please rate the quality of the service you received from your host.</Label><span className="text-danger">*</span>
-            <Field model=".service" className="field">
+            <Field model=".service" className="field" 
+              validators={{
+                required
+              }}>
+              <Errors
+                className="text-danger error"
+                model=".service"
+                show="touched"
+                messages={{
+                    required: 'Required',
+                
+                }}
+              />
               <label>
-                <input type="radio" value="Excellent" />
-                <span className="ml-2">Excellent</span> 
+                <input type="radio"  value="Excellent" /> Excellent
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Good" />
-                <span className="ml-2">Good</span>
+                <input type="radio"  value="Good" /> Good
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Fair" /> 
-                <span className="ml-2">Fair</span>
+                <input type="radio"  value="Fair" /> Fair
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Bad" /> 
-                <span className="ml-2">Bad</span>
+                <input type="radio"  value="Bad" /> Bad
+                <span></span>
               </label>
             </Field>
+           
             <Label>Please rate the quality of your beverage.</Label><span className="text-danger">*</span>
-            <Field model=".beverages" className="field">
+            <Field model=".beverages" className="field" 
+              validators={{
+                required
+              }}>
+              <Errors
+              className="text-danger error"
+              model=".beverages"
+              show="touched"
+              messages={{
+                  required: 'Required',
+              
+              }}
+            />
             <label>
-                <input type="radio" value="Excellent" />
-                <span className="ml-2">Excellent</span> 
+                <input type="radio"  value="Excellent" /> Excellent
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Good" />
-                <span className="ml-2">Good</span>
+                <input type="radio"  value="Good" /> Good
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Fair" /> 
-                <span className="ml-2">Fair</span>
+                <input type="radio"  value="Fair" /> Fair
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Bad" /> 
-                <span className="ml-2">Bad</span>
+                <input type="radio"  value="Bad" /> Bad
+                <span></span>
               </label>
             </Field>
+            
             <Label>Was our restaurant clean?</Label><span className="text-danger">*</span>
-            <Field model=".restaurantClean" className="field">
+            <Field model=".restaurantClean" className="field" 
+              validators={{
+                required
+              }}>
+              <Errors
+              className="text-danger error"
+              model=".restaurantClean"
+              show="touched"
+              messages={{
+                  required: 'Required',
+              
+              }}
+            />
             <label>
-                <input type="radio" value="Excellent" />
-                <span className="ml-2">Excellent</span> 
+                <input type="radio"  value="Excellent" /> Excellent
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Good" />
-                <span className="ml-2">Good</span>
+                <input type="radio"  value="Good" /> Good
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Fair" /> 
-                <span className="ml-2">Fair</span>
+                <input type="radio"  value="Fair" /> Fair
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Bad" /> 
-                <span className="ml-2">Bad</span>
+                <input type="radio"  value="Bad" /> Bad
+                <span></span>
               </label>
             </Field>
             <Label>Please rate your overall dining experience.</Label><span className="text-danger">*</span>
-            <Field model=".diningExperience" className="field">
+            <Field model=".diningExperience" className="field"
+              validators={{
+                required
+              }}>
+              <Errors
+              className="text-danger error"
+              model=".diningExperience"
+              show="touched"
+              messages={{
+                  required: 'Required',
+              
+              }}
+            />
             <label>
-                <input type="radio" value="Excellent" />
-                <span className="ml-2">Excellent</span> 
+                <input type="radio"  value="Excellent" /> Excellent
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Good" />
-                <span className="ml-2">Good</span>
+                <input type="radio"  value="Good" /> Good
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Fair" /> 
-                <span className="ml-2">Fair</span>
+                <input type="radio"  value="Fair" /> Fair
+                <span></span>
               </label>
               <label>
-                <input type="radio" value="Bad" /> 
-                <span className="ml-2">Bad</span>
+                <input type="radio"  value="Bad" /> Bad
+                <span></span>
               </label>
             </Field>
+            
           </Col>
         </Row>      
         <Row className="form-group button-row">

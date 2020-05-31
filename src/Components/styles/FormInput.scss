@@ -1,12 +1,16 @@
 
 .form-div{
-    padding: 20px 30px;
+    padding: 30px 40px;
     background: #F5F5F5;
+    height: 90vh;
+
     .form-input{
         border: 1px solid black;
         padding: 20px 0;
         position: relative;
         background: #FFFFFF;
+        box-shadow: 1px 1px 4px 4px rgb(190, 187, 187);
+
         Label{
             margin:30px 10px 10px 0;
         }
@@ -36,4 +40,46 @@
             padding: 5px 19px;
         }
     }
+}
+
+.field{
+    position: relative;
+}
+.field input[type='radio'] {
+  display: none;
+}
+
+.field label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin: 0 5px 0 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 11px;
+  border: 2px solid #8870C9;
+  background-color: transparent;
+}
+
+.field label {
+  position: relative;
+}
+
+.field label input[type='radio']:checked+span {
+  border-radius: 11px;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  display: block;
+  background-color: #8870C9;
+}
+
+.error{
+    position: absolute;
+    top: -67%;
+    right: 25%;
+    font-size: 14px;
 }

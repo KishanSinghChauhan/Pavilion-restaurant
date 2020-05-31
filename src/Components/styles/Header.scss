@@ -1,0 +1,15 @@
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid rgb(31, 31, 161);
+    .logo-head{
+        padding: 10px 0 10px 60px;
+    }
+    .nav-head{
+        margin-left: auto;
+        padding:30px 60px 0px 0;
+        color: rgb(31, 31, 161);
+    }
+}
+

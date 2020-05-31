@@ -9,7 +9,6 @@ import swal from 'sweetalert';
 import './styles/FormInput.scss'
 
 class FormInput extends Component {
-
   constructor(props) {
     super(props);
     this.state = {

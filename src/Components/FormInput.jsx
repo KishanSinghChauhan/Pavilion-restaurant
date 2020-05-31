@@ -42,16 +42,15 @@ class FormInput extends Component {
             <Control.textarea model=".message" id="message" name="message" className="form-control input-area"
               rows="1" 
               validators={{
-                required, minLength: minLength(21), maxLength: maxLength(101)
+                required, maxLength: maxLength(101)
               }}
             />
             <Errors
-              className="text-danger"
+              className="text-danger error-input"
               model=".message"
               show="touched"
               messages={{
                   required: 'Required',
-                  minLength: 'Must be greater than 20 characters',
                   maxLength: 'Must be 100 characters or less'
               }}
             />
@@ -67,7 +66,7 @@ class FormInput extends Component {
             <Control.text model=".name" id="name" name="name"
               className="form-control"
               validators={{
-                required, minLength: minLength(3), maxLength: maxLength(30)
+                required,  maxLength: maxLength(30)
               }}
             />
             <Errors
@@ -76,7 +75,6 @@ class FormInput extends Component {
               show="touched"
               messages={{
                   required: 'Required',
-                  minLength: 'Must be greater than 2 characters',
                   maxLength: 'Must be 30 characters or less'
               }}
             />
@@ -92,7 +90,7 @@ class FormInput extends Component {
               model=".email"
               show="touched"
               messages={{
-                  required: 'Required',
+                  // required: 'Required',
                   validEmail:'Invalid email address'
               }}
             />
